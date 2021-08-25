@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Wine Paradise</title>
+        <link rel="stylesheet" type="text/css" href="css/styleWelcome.css">
+        <script type="text/javascript">
+            const body = document.body;
+const btn = document.querySelectorAll('.button')[0];
+
+btn.addEventListener('mouseenter', () => {
+    body.classList.add('show');
+});
+
+btn.addEventListener('mouseleave', () => {
+    body.classList.remove('show');
+});
+        </script>
+
+
+    </head>
+    <body>
+        
+<div class="title">
+ <h1>Wine<br/>Paradise</h1>
+</div>
+
+<nav>
+  <ul>
+    <li>
+        <a id="compra" href="catalogo.html">
+      compra
+      <span></span><span></span><span></span><span></span>
+        </a> 
+    </li>
+    <li onclick="">
+        <a id="vendi" href="form.html">
+      vendi
+      <span></span><span></span><span></span><span></span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+    </body>
+</html>
