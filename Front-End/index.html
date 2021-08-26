@@ -3,43 +3,73 @@
         <meta charset="UTF-8">
         <title>Wine Paradise</title>
         <link rel="stylesheet" type="text/css" href="css/styleWelcome.css">
+        <script src="vendor/js/web3.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
-            const body = document.body;
-const btn = document.querySelectorAll('.button')[0];
 
-btn.addEventListener('mouseenter', () => {
-    body.classList.add('show');
-});
+        var getText = "Ilaria";
+        //serie di funzioni che stampano dal menu a tendina l'utente selezionato
+        $(document).ready(function() {
 
-btn.addEventListener('mouseleave', () => {
-    body.classList.remove('show');
-});
+          $(".dropdown-menu li a").click(function() {
+            getText = $(this).text();
+
+            console.log(getText);
+            console.log($(this).closest('.dropdown').find('.btn'));
+
+            $(this).closest('.dropdown').find('.btn').text(getText);
+
+          });
+        });
+
+        function Send() {
+            var name = getText;
+            var url = "catalogo.html?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+
         </script>
 
 
     </head>
     <body>
         
-<div class="title">
- <h1>Wine<br/>Paradise</h1>
-</div>
+        <div class="title">
+         <h1>Wine<br/>Paradise</h1>
+        </div>
 
-<nav>
-  <ul>
-    <li>
-        <a id="compra" href="catalogo.html">
-      compra
-      <span></span><span></span><span></span><span></span>
-        </a> 
-    </li>
-    <li onclick="">
-        <a id="vendi" href="form.html">
-      vendi
-      <span></span><span></span><span></span><span></span>
-      </a>
-    </li>
-  </ul>
-</nav>
+        <nav>
+          <ul>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Users
+                <span class="caret"></span></button>
+                <ul id="utentiid" class="dropdown-menu">
+                    <li><a href="#">Ilaria</a></li>
+                    <li><a href="#">Andrea</a></li>
+                    <li><a href="#">Gabriele</a></li>
+                    <li><a href="#">User 4</a></li>
+                    <li><a href="#">User 5</a></li>
+                    <li><a href="#">User 6</a></li>
+                    <li><a href="#">User 7</a></li>
+                    <li><a href="#">User 8</a></li>
+                    <li><a href="#">User 9</a></li>
+                    <li><a href="#">User 10</a></li>
+                </ul>
+            </div>
+            <li>
+                <a id="compra" onclick = "Send()">
+              compra
+              <span></span><span></span><span></span><span></span>
+                </a> 
+            </li>
+            <li>
+                <a id="vendi" href="form.html">
+              vendi
+              <span></span><span></span><span></span><span></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
     </body>
 </html>

@@ -20,6 +20,31 @@
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script>
+
+        var getText = null;
+        //mi estraggo i parametri che mi porto da pagina iniziale
+        var queryString = new Array();
+        window.onload = function () {
+            if (queryString.length == 0) {
+                if (window.location.search.split('?').length > 1) {
+                    var parametro = window.location.search.split('?')[1];
+                    //name=Mudassar Khan
+                        var key = parametro.split('=')[0];
+                        var value = decodeURIComponent(parametro.split('=')[1]);
+                        //queryString[key] = value;
+                        getText = value
+
+                }
+            }
+            //if (queryString["name"] != null && queryString["technology"] != null) {
+            //    var data = "<u>Values from QueryString</u><br /><br />";
+            //    data += "<b>Name:</b> " + queryString["name"] + " <b>Technology:</b> " + queryString["technology"];
+            //    document.getElementById("lblData").innerHTML = data;
+            //}
+        };
+
+
+
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {
@@ -134,17 +159,43 @@
                 "signature": "0xf64bfaba"
             }
         ]);
-        var contract = SmartContract.at("0x0385453949a608548D9577ec04d1b75B300B5c30");
+        //ogni volta che resetti ricorda di ricompilare i contratti e cambiare l'address!!
+        var contract = SmartContract.at("0xE24E8BabB3B853B0dB91bf9F9f9C9B36c064e3a3");
+
+        function getUser(){
+            if(getText == "Ilaria")
+                return web3.eth.accounts[0];
+            if(getText == "Andrea")
+                return web3.eth.accounts[1];
+            if(getText == "Gabriele")
+                return web3.eth.accounts[2];
+            if(getText == "User 4")
+                return web3.eth.accounts[3];
+            if(getText == "User 5")
+                return web3.eth.accounts[4];
+            if(getText == "User 6")
+                return web3.eth.accounts[5];
+            if(getText == "User 7")
+                return web3.eth.accounts[6];
+            if(getText == "User 8")
+                return web3.eth.accounts[7];
+            if(getText == "User 9")
+                return web3.eth.accounts[8];
+            if(getText == "User 10")
+                return web3.eth.accounts[9];
+            
+        }
 
         function purchase(artId, cost) {
 
-            var sender = web3.eth.accounts[0];
+            var sender = getUser();
             var receiver = web3.eth.accounts[9];
 
-            var balance = web3.eth.getBalance(sender);
+            var balance = web3.eth.getBalance(sender).toNumber();
             console.log(balance);
 
             var amount = web3.toWei(cost, 'ether');
+            console.log(amount)
             if (balance > amount) {
                 contract.purchase(artId);
                 web3.eth.sendTransaction({
@@ -204,7 +255,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="index.html">Home
               <span class="sr-only">(current)</span>
             </a>
                     </li>
