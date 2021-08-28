@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Wine Paradise</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styleWelcome.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+        <script type="text/javascript">
+            var getText = "Ilaria";
+        //serie di funzioni che stampano dal menu a tendina l'utente selezionato
+        $(document).ready(function() {
+
+          $(".dropdown-menu li a").click(function() {
+            getText = $(this).text();
+
+            console.log(getText);
+            console.log($(this).closest('.dropdown').find('.btn'));
+
+            $(this).closest('.dropdown').find('.btn').text(getText);
+
+          });
+        });
+
+        function Send() {
+            var name = getText;
+            var url = "catalogo?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+
+        </script>
+
+
+    </head>
+    <body>
+        
+<div class="title">
+         <h1>Wine<br/>Paradise</h1>
+        </div>
+
+<p style="color:#b11226;font-family: Apple Chancery, cursive;font-size:40px ;">La vita è troppo breve per bere vini mediocri.
+<br>(Johann Wolfgang von Goethe)<br></p>
+
+
+        <nav role="navigation" class="primary-navigation">
+              <ul>
+                <li><a onclick = "Send()">Compra</a></li>
+                <li><a href="http://127.0.0.1:8115/form/">Vendi</a></li>
+                <li><a href="#">Utenti &dtrif;</a>
+                  <ul id="utentiid" class="dropdown">
+                    <li><a href="#">Ilaria</a></li>
+                    <li><a href="#">Andrea</a></li>
+                    <li><a href="#">Gabriele</a></li>
+                    <li><a href="#">User4</a></li>
+                    <li><a href="#">User5</a></li>
+                    <li><a href="#">User6</a></li>
+                    <li><a href="#">User7</a></li>
+                    <li><a href="#">User8</a></li>
+                    <li><a href="#">User9</a></li>
+                    <li><a href="#">User10</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </nav>
+
+
+
+
+
+               <audio style="margin-top: 40%" src="{{url_for('static', filename='paradise.mp3')}}" controls>
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+
+
+
+    </body>
+</html>
