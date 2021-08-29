@@ -4,6 +4,8 @@
         <title>Wine Paradise</title>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styleWelcome.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+        <script src="static/vendor/js/web3.min.js"></script>
+        <script src="static/vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
             var getText = "Ilaria";
         //serie di funzioni che stampano dal menu a tendina l'utente selezionato
@@ -13,9 +15,9 @@
             getText = $(this).text();
 
             console.log(getText);
-            console.log($(this).closest('.dropdown').find('.btn'));
+            console.log($(this).closest('.dropdown-menu'));
 
-            $(this).closest('.dropdown').find('.btn').text(getText);
+            $(this).closest('.dropdown-menu').find('.btn').text(getText);
 
           });
         });
@@ -25,6 +27,11 @@
             var url = "catalogo?name=" + encodeURIComponent(name);
             window.location.href = url;
         };
+        function Send1() {
+            var name = getText;
+            var url = "form?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
 
         </script>
 
@@ -32,6 +39,13 @@
     </head>
     <body>
         
+
+<style type="text/css">
+    .test:active {
+      font-size: 45px;
+      color: blueviolet;
+}
+</style>
 <div class="title">
          <h1>Wine<br/>Paradise</h1>
         </div>
@@ -43,19 +57,19 @@
         <nav role="navigation" class="primary-navigation">
               <ul>
                 <li><a onclick = "Send()">Compra</a></li>
-                <li><a href="http://127.0.0.1:8115/form/">Vendi</a></li>
-                <li><a href="#">Utenti &dtrif;</a>
-                  <ul id="utentiid" class="dropdown">
-                    <li><a href="#">Ilaria</a></li>
-                    <li><a href="#">Andrea</a></li>
-                    <li><a href="#">Gabriele</a></li>
-                    <li><a href="#">User4</a></li>
-                    <li><a href="#">User5</a></li>
-                    <li><a href="#">User6</a></li>
-                    <li><a href="#">User7</a></li>
-                    <li><a href="#">User8</a></li>
-                    <li><a href="#">User9</a></li>
-                    <li><a href="#">User10</a></li>
+                <li><a onclick = "Send1()">Vendi</a></li>
+                <li><a type = "button" href="#">Utenti &dtrif;</a>
+                  <ul id="utentiid" class="dropdown-menu">
+                    <li><a class = "test" href="#">Ilaria</a></li>
+                    <li><a  class = "test"href="#">Andrea</a></li>
+                    <li><a  class = "test"href="#">Gabriele</a></li>
+                    <li><a  class = "test"href="#">User4</a></li>
+                    <li><a  class = "test"href="#">User5</a></li>
+                    <li><a  class = "test"href="#">User6</a></li>
+                    <li><a  class = "test"href="#">User7</a></li>
+                    <li><a  class = "test"href="#">User8</a></li>
+                    <li><a  class = "test"href="#">User9</a></li>
+                    <li><a  class = "test"href="#">User10</a></li>
                   </ul>
                 </li>
               </ul>
