@@ -53,7 +53,12 @@
             var url = "http://127.0.0.1:8115/classifica?name=" + encodeURIComponent(name);
             window.location.href = url;
         };
-        
+
+        function Send2() {
+            var name = getText;
+            var url = "http://127.0.0.1:8115/acquisti?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };        
 
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
@@ -269,7 +274,7 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8115/acquisti/">I miei acquisti</a>
+                        <a class="nav-link" onclick="Send2()">I miei acquisti</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" onclick="Send1()" ">Classifica</a>
