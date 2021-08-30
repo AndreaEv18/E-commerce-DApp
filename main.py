@@ -3,7 +3,7 @@ import json
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-vini=[]
+vini = {"Cantina Marrocco": [10],"Cantina Alecci": [10],"Cantina Introini": [10]}
 
 @app.route('/', methods = ['GET'])
 def init():
@@ -34,10 +34,13 @@ def datas():
     if request.method == 'POST':
         form = request.form
         nomeVino = form["nomeVino"]
-        vini.append(nomeVino)
         prezzoVendita = form["prezzoVendita"]
-        #list = [ label_predict,max_score,occorrenze, datetime.timedelta(seconds=final)]
-        return render_template('catalogo.html', vino=vini,price = prezzoVendita)
+        image = request.files["imagename"]
+        vini[nomeVino] = []
+        vini[nomeVino].append(prezzoVendita)
+        vini[nomeVino].append(image)
+        prezzoVendita = form["prezzoVendita"]
+        return render_template('catalogo.html', vino=vini)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8115)

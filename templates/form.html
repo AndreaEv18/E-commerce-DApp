@@ -192,7 +192,7 @@
           <a class="btn-item" onclick = "Send()">Vai al catalogo</a>
         </div>
       </div>
-      <form action="/catalogo/" method="POST">
+      <form enctype="multipart/form-data" action="/catalogo/" method="POST">
         <div class="title">
           <i class="fas fa-pencil-alt"></i> 
           <h2>Parlaci del tuo vino</h2>
@@ -202,7 +202,7 @@
           <input type="text" name="prezzoVendita" placeholder="Prezzo di vendita">
           Seleziona un'immagine:
           <label for="inputFile" class="custom-file-input">
-              <input id="inputFile" type="file" style="display:none;">
+              <input id="inputFile" type="file" name="imagename" style="display:none;">
                 
           </label>
         </div>

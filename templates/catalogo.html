@@ -280,13 +280,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="{{url_for('static', filename='ethereum copertina.jpg')}}" alt="First slide">
+                            <img class="d-block img-fluid" src="{{url_for('static', filename='vino1.jpg')}}" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="{{url_for('static', filename='ethereum copertina.jpg')}}" alt="Second slide">
+                            <img class="d-block img-fluid" src="{{url_for('static', filename='vino2.jpg')}}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid" src="{{url_for('static', filename='ethereum copertina.jpg')}}" alt="Third slide">
+                            <img class="d-block img-fluid" src="{{url_for('static', filename='vino3.jpg')}}" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -303,16 +303,16 @@
                     <div class="row" , style="padding-top: 50px">
 
                         <!-- prima riga -->
-                        
+                        {% for key in vino %}
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top" src="{{url_for('static', filename='Botticelli-La-nascita-di-Venere.jpg')}}" alt=""></a>
+                                <a href="#"><img class="card-img-top" src="{{url_for('static', filename='vino.jpg')}}" alt=""></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a href="#">{{vino[0]}}</a>
+                                        <a href="#">{{key}}</a>
                                     </h4>
-                                    <h5>49.99 ETH</h5>
-                                    <p class="card-text">La nascita di Venere</p>
+                                    <h5>{{vino[key][0]}} ETH</h5>
+                                    <p class="card-text">Vino DOC</p>
                                 </div>
                                 <div class="card-footer">
                                     <a href="#" onclick="purchase(0, 49.99)">
@@ -321,99 +321,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="{{url_for('static', filename='Leonardo-da-Vinci-Ultima-cena.jpg')}}" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Leonardo Da Vinci</a>
-                                </h4>
-                                <h5>79.99 ETH</h5>
-                                <p class="card-text">Ultima Cena</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" onclick="purchase(1, 79.99)">
-                                    <h6 align="center" , class="card-link">Compra</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                        {% endfor %}
 
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="{{url_for('static', filename='Van-Gogh-Campo-di-grano-con-volo-di-corvi.jpg')}}" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Van Gogh</a>
-                                </h4>
-                                <h5>35.99 ETH</h5>
-                                <p class="card-text">Campo di grano con volo di corvi</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" onclick="purchase(2, 35.99)">
-                                    <h6 align="center" , class="card-link">Compra</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- seconda riga -->
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="{{url_for('static', filename='La-persistenza-della-memoria-di-Dalì.jpg')}}" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Dalì</a>
-                                </h4>
-                                <h5>29.99 ETH</h5>
-                                <p class="card-text">La persistenza della memoria</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" onclick="purchase(3, 29.99)">
-                                    <h6 align="center" , class="card-link">Compra</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="{{url_for('static', filename='Picasso-Guernica.jpg')}}" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Picasso</a>
-                                </h4>
-                                <h5>15.99 ETH</h5>
-                                <p class="card-text">Guernica</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" onclick="purchase(4, 15.99)">
-                                    <h6 align="center" , class="card-link">Compra</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="{{url_for('static', filename='Klimt-Il-bacio.jpg')}}" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">Klimt</a>
-                                </h4>
-                                <h5>45.99 ETH</h5>
-                                <p class="card-text">Il Bacio</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" onclick="purchase(5, 45.99)">
-                                    <h6 align="center" , class="card-link">Compra</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-            </div>
+                </div>
         </div>
     </div>
 
