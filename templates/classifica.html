@@ -7,6 +7,31 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/leaderboard.css') }}">
     <meta charset="UTF-8">
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  
+  <script type="text/javascript">
+    var getText = null;
+        //mi estraggo i parametri che mi porto da pagina iniziale
+        var queryString = new Array();
+        window.onload = function () {
+            if (queryString.length == 0) {
+                if (window.location.search.split('?').length > 1) {
+                    var parametro = window.location.search.split('?')[1];
+                    //name=Mudassar Khan
+                        var key = parametro.split('=')[0];
+                        var value = decodeURIComponent(parametro.split('=')[1]);
+                        //queryString[key] = value;
+                        getText = value
+
+                }
+            }
+        };
+        function Send() {
+            var name = getText;
+            var url = "http://127.0.0.1:8115/catalogo?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+  </script>
+
   </head>
   <body>
     <!--  <div class="blog">Visit <a href="#" target="_blank">My Blog</a></div> -->
@@ -43,7 +68,7 @@
     </div>
   </div>
 
-  <span><a href="http://127.0.0.1:8115/catalogo/"></a></span>
+  <span><a onclick="Send()"></a></span>
 
   </body>
 </html>

@@ -7,7 +7,25 @@
         <script src="static/vendor/js/web3.min.js"></script>
         <script src="static/vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
-            var getText = "Ilaria";
+            
+        var getText = null;
+        //mi estraggo i parametri che mi porto da pagina iniziale
+        var queryString = new Array();
+        window.onload = function () {
+            if (queryString.length == 0) {
+                if (window.location.search.split('?').length > 1) {
+                    var parametro = window.location.search.split('?')[1];
+                    //name=Mudassar Khan
+                        var key = parametro.split('=')[0];
+                        var value = decodeURIComponent(parametro.split('=')[1]);
+                        //queryString[key] = value;
+                        getText = value
+
+                }
+            }
+        };
+        if(getText == null)
+            getText ="Ilaria"
         //serie di funzioni che stampano dal menu a tendina l'utente selezionato
         $(document).ready(function() {
 
@@ -21,6 +39,7 @@
 
           });
         });
+
 
         function Send() {
             var name = getText;

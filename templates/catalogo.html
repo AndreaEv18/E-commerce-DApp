@@ -41,6 +41,20 @@
             //    document.getElementById("lblData").innerHTML = data;
             //}
         };
+
+        function Send() {
+            var name = getText;
+            var url = "http://127.0.0.1:8115/?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+
+         function Send1() {
+            var name = getText;
+            var url = "http://127.0.0.1:8115/classifica?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+        
+
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {
@@ -155,7 +169,7 @@
                 "signature": "0xf64bfaba"
             }
         ]);
-        var contract = SmartContract.at("0xbF4ce7649f254454372EF3EAE23B263C0291d980");
+        var contract = SmartContract.at("0x05DA716f1434674bb231468224308aDB460ee620");
 
         function getUser(){
             if(getText == "Ilaria")
@@ -250,15 +264,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="http://127.0.0.1:8115/">Home
+                        <a class="nav-link" onclick="Send()">Home
               <span class="sr-only">(current)</span>
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8115/Proprietari.html/">Proprietari</a>
+                        <a class="nav-link" href="http://127.0.0.1:8115/Proprietari/">Proprietari</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8115/classifica/">Classifica</a>
+                        <a class="nav-link" onclick="Send1()" ">Classifica</a>
                     </li>
                 </ul>
             </div>

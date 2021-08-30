@@ -28,7 +28,12 @@
         };
         function Send() {
             var name = getText;
-            var url = "catalogo?name=" + encodeURIComponent(name);
+            var url = "http://127.0.0.1:8115/catalogo?name=" + encodeURIComponent(name);
+            window.location.href = url;
+        };
+        function Send1() {
+            var name = getText;
+            var url = "http://127.0.0.1:8115/?name=" + encodeURIComponent(name);
             window.location.href = url;
         };
     </script>
@@ -187,7 +192,7 @@
         <h1>Registra il tuo vino qui</h1>
         <p></p>
         <div class="btn-group">
-          <a class="btn-item" href="http://127.0.0.1:8115">Torna indietro</a>
+          <a class="btn-item" onclick="Send1()">Torna indietro</a>
           <a class="btn-item" onclick = "Send()">Vai al catalogo</a>
         </div>
       </div>
