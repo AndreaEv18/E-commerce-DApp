@@ -21,6 +21,11 @@ def classifica():
     if request.method == 'GET':
         return render_template('classifica.html')
 
+@app.route('/acquisti/', methods = ['POST', 'GET'])
+def acquisti():
+    if request.method == 'GET':
+        return render_template('acquisti.html')
+
 @app.route('/catal/')
 def users():
     name = request.args.get('name')
