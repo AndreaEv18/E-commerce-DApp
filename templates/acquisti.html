@@ -11,14 +11,14 @@
     <title>I miei acquisti</title>
 
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/myPurch.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='styles/myPurchase.css')}}">
     <script src="{{url_for('static', filename='vendor/js/web3.min.js')}}"></script>
     <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
     <script type="text/javascript">
         var getText = null;
         //mi estraggo i parametri che mi porto da pagina iniziale
         var queryString = new Array();
-        window.onload = function () {
+        function onload() {
             if (queryString.length == 0) {
                 if (window.location.search.split('?').length > 1) {
                     var parametro = window.location.search.split('?')[1];
@@ -27,6 +27,7 @@
                         var value = decodeURIComponent(parametro.split('=')[1]);
                         //queryString[key] = value;
                         getText = value
+                        console.log(getText)
 
                 }
             }
@@ -39,11 +40,107 @@
             window.location.href = url;
         };
 
-         function Send1() {
+        function Send1() {
             var name = getText;
             var url = "http://127.0.0.1:8115/catalogo?name=" + encodeURIComponent(name);
             window.location.href = url;
         };
+
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        var SmartContract = web3.eth.contract([
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "artId",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getproducts",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]);
+        var contract = SmartContract.at("0xE328927b63EF18330E84b2c66040bE9Ef28f1D02");
+
+        function getUser(){
+            if(getText == "Ilaria")
+                return web3.eth.accounts[0];
+            if(getText == "Andrea")
+                return web3.eth.accounts[1];
+            if(getText == "Gabriele")
+                return web3.eth.accounts[2];
+            if(getText == "User 4")
+                return web3.eth.accounts[3];
+            if(getText == "User 5")
+                return web3.eth.accounts[4];
+            if(getText == "User 6")
+                return web3.eth.accounts[5];
+            if(getText == "User 7")
+                return web3.eth.accounts[6];
+            if(getText == "User 8")
+                return web3.eth.accounts[7];
+            if(getText == "User 9")
+                return web3.eth.accounts[8];
+            if(getText == "User 10")
+                return web3.eth.accounts[9];
+            
+        }
+
+        function getBuyer() {
+            var user = getUser();
+            console.log(user)
+            console.log(getText)
+
+            var products = contract.getproducts(user);
+
+            console.log(products);
+            for(var i = 1;  i < products.length; i+=1){
+                $("#locatedDiv").append('<div class="product-grid__product-wrapper"><div class="product-grid__product"><div class="product-grid__img-wrapper"><img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" /></div><span class="product-grid__title">'+ products[i] +'</span><div class="product-grid__extend-wrapper"><div class="product-grid__extend"><p class="product-grid__description">Clicca su vota per lasciarsi il tuo feedback</p><span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i>Vota</span></div></div></div></div>');
+            }
+
+
+        }
+        onload()
+
+        
     </script>
 </head>
 
@@ -61,117 +158,24 @@
     <div class="content">
         <!-- content here -->
         <div class="product-grid product-grid--flexbox">
-            <div class="product-grid__wrapper">
+            <div class="product-grid__wrapper" id="locatedDiv">
                 <!-- Product list start here -->
 
                 <!-- Single product -->
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                
+                <script type="text/javascript">
+                    getBuyer();
+                </script>
                 <!-- end Single product -->
+                
+                
+                   
+            </div>
 
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-grid__product-wrapper">
-                    <div class="product-grid__product">
-                        <div class="product-grid__img-wrapper">         
-                            <img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" />
-                        </div>
-                        <span class="product-grid__title">Vino1</span>
-                        <div class="product-grid__extend-wrapper">
-                            <div class="product-grid__extend">
-                                <p class="product-grid__description">Clicca su vota per lasciarci il tuo feedback</p>
-                                <span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Vota</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
 
                 <div id="btn" onclick="Send()">
                     <span class="noselect">Home</span>
@@ -180,10 +184,8 @@
                 <div id="btn1" onclick="Send1()"> 
                     <span class="noselect1">Catalogo</span>
                     <div id="circle1"></div>
-                </div>
-                   
-            </div>      
-        </div>
+                </div> 
+
     </div>
 </div>
 

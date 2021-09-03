@@ -1,20 +1,18 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.16;
+pragma experimental ABIEncoderV2;
 
 contract Purchasing {
 
-	address [6] public buyers;
-
-	function purchase(uint artId) public returns (uint) {
-  		require(artId >= 0 && artId <= 5);
+	mapping(address => string[]) products;
 
 
-  		buyers[artId] = msg.sender;	//The address of the person or smart contract who called this function is denoted by msg.sender
-
-  		return artId;
+	function purchase(string calldata artId, address user) external {
+		
+		products[user].push(artId);
 	}
 
-	function getBuyers() public view returns (address[6] memory) {
-  		return buyers;
+	function getproducts(address user) public view returns (string[] memory) {
+  		return products[user];
 	}
 
 }

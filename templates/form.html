@@ -19,6 +19,7 @@
                         var value = decodeURIComponent(parametro.split('=')[1]);
                         //queryString[key] = value;
                         getText = value
+                        document.getElementById('userId').value = value;
 
                 }
             }
@@ -28,6 +29,7 @@
             //    document.getElementById("lblData").innerHTML = data;
             //}
         };
+        
         function Send() {
             var name = getText;
             var url = "http://127.0.0.1:8115/catalogo?name=" + encodeURIComponent(name);
@@ -204,6 +206,7 @@
           <h2>Parlaci del tuo vino</h2>
         </div>
         <div class="info">
+          <input type="hidden" id="userId" name="user" value="">
           <input class="fname" type="text" name="nomeVino" placeholder="Nome Vino">
           <input type="text" name="prezzoVendita" placeholder="Prezzo di vendita">
           Seleziona un'immagine:
@@ -211,6 +214,7 @@
               <input id="inputFile" type="file" name="imagename" style="display:none;">
                 
           </label>
+          
         </div>
         <button type="submit" href="/">Registra</button>
       </form>
