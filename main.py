@@ -26,7 +26,9 @@ def data():
 @app.route('/classifica/', methods = ['POST', 'GET'])
 def classifica():
     if request.method == 'GET':
-        return render_template('classifica.html')
+        return render_template('classifica.html', vino = vini)
+    if request.method == 'POST':
+        return render_template('classifica.html', vino = vini)
 
 @app.route('/acquisti/', methods = ['POST', 'GET'])
 def acquisti():

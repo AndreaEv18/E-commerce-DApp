@@ -31,6 +31,193 @@
             var url = "http://127.0.0.1:8115/catalogo?name=" + encodeURIComponent(name);
             window.location.href = url;
         };
+
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var SmartContract1 = web3.eth.contract([
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "candidateList",
+              "outputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "votesReceived",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": false,
+              "inputs": [
+                {
+                  "internalType": "bytes32[]",
+                  "name": "candidateNames",
+                  "type": "bytes32[]"
+                }
+              ],
+              "name": "voting",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "totalVotesFor",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": false,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "voteForCandidate",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "validCandidate",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [],
+              "name": "getCandidateList",
+              "outputs": [
+                {
+                  "internalType": "bytes32[]",
+                  "name": "",
+                  "type": "bytes32[]"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ])
+          var contract1 = SmartContract1.at("0xe71858C1262aFb225b54E64274FabC3BEE8b935a")
+
+          function getUser(){
+            if(getText == "Ilaria")
+                return web3.eth.accounts[0];
+            if(getText == "Andrea")
+                return web3.eth.accounts[1];
+            if(getText == "Gabriele")
+                return web3.eth.accounts[2];
+            if(getText == "User 4")
+                return web3.eth.accounts[3];
+            if(getText == "User 5")
+                return web3.eth.accounts[4];
+            if(getText == "User 6")
+                return web3.eth.accounts[5];
+            if(getText == "User 7")
+                return web3.eth.accounts[6];
+            if(getText == "User 8")
+                return web3.eth.accounts[7];
+            if(getText == "User 9")
+                return web3.eth.accounts[8];
+            if(getText == "User 10")
+                return web3.eth.accounts[9];
+            
+        }
+        function getCandidate(){
+          var candidati = contract1.getCandidateList();
+          return candidati;
+        }
+        var cand = getCandidate();
+        
+        var risultati = []
+        for(let i = 0; i< cand.length; i++){
+            var e = contract1.totalVotesFor(cand[i])
+            var numero = e.toNumber();
+            risultati.push(numero)
+        }
+        console.log(cand)
+ 
+        $(document).ready(function(){
+          $("#prova0").text(risultati[0]);
+          $("#prova1").text(risultati[1]);
+          $("#prova2").text(risultati[2]);
+          $("#prova3").text(risultati[3]);
+        });
+
+
   </script>
 
   </head>
@@ -44,26 +231,12 @@
       </div>
       <div class="body">
         <ol>
+          {% for key in vino %}
           <li>
-            <mark>Vino1</mark>
-            <small>948</small>
+            <mark>{{key}}</mark>
+            <small id="prova{{vino[key][1]}}">0</small>
           </li>
-          <li>
-            <mark>Vino2</mark>
-            <small>750</small>
-          </li>
-          <li>
-            <mark>Vino3</mark>
-            <small>684</small>
-          </li>
-          <li>
-            <mark>Vino4</mark>
-            <small>335</small>
-          </li>
-          <li>
-            <mark>Vino5</mark>
-            <small>296</small>
-          </li>
+          {% endfor %}
         </ol>
       </div>
     </div>

@@ -56,49 +56,181 @@
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
         var SmartContract = web3.eth.contract([
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "artId",
-          "type": "string"
-        },
-        {
-          "internalType": "address",
-          "name": "user",
-          "type": "address"
-        }
-      ],
-      "name": "purchase",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "user",
-          "type": "address"
-        }
-      ],
-      "name": "getproducts",
-      "outputs": [
-        {
-          "internalType": "string[]",
-          "name": "",
-          "type": "string[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    }
-  ]);
-        var contract = SmartContract.at("0xE328927b63EF18330E84b2c66040bE9Ef28f1D02");
+            {
+              "constant": false,
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "artId",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "user",
+                  "type": "address"
+                }
+              ],
+              "name": "purchase",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "user",
+                  "type": "address"
+                }
+              ],
+              "name": "getproducts",
+              "outputs": [
+                {
+                  "internalType": "string[]",
+                  "name": "",
+                  "type": "string[]"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]);
+        var SmartContract1 = web3.eth.contract([
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "candidateList",
+              "outputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "votesReceived",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": false,
+              "inputs": [
+                {
+                  "internalType": "bytes32[]",
+                  "name": "candidateNames",
+                  "type": "bytes32[]"
+                }
+              ],
+              "name": "voting",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "totalVotesFor",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": false,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "voteForCandidate",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "candidate",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "validCandidate",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "constant": true,
+              "inputs": [],
+              "name": "getCandidateList",
+              "outputs": [
+                {
+                  "internalType": "bytes32[]",
+                  "name": "",
+                  "type": "bytes32[]"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ])
+        var contract = SmartContract.at("0x3dFeDD248517bFC0576a87d78a4802b42Fe6B634");
+        var contract1 = SmartContract1.at("0xe71858C1262aFb225b54E64274FabC3BEE8b935a")
 
         function getUser(){
             if(getText == "Ilaria")
@@ -123,17 +255,32 @@
                 return web3.eth.accounts[9];
             
         }
+        var products = [];
+        function vota(ricevente){
+            var sender = getUser();
+            var receiver = ricevente;
+
+            //forse da rendere globale e da implementare una funzione di aggiunta
+            contract1.voting(products);
+            contract1.voteForCandidate(receiver);
+            
+            alert("Grazie, la tua valutazione ci sarà molto utile!");
+            console.log(contract1.getCandidateList())
+            //var tot = contract.totalVotesFor(receiver)
+            //console.log(tot.toNumber())
+        }
 
         function getBuyer() {
             var user = getUser();
             console.log(user)
             console.log(getText)
 
-            var products = contract.getproducts(user);
+            products = contract.getproducts(user);
 
             console.log(products);
-            for(var i = 1;  i < products.length; i+=1){
-                $("#locatedDiv").append('<div class="product-grid__product-wrapper"><div class="product-grid__product"><div class="product-grid__img-wrapper"><img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" /></div><span class="product-grid__title">'+ products[i] +'</span><div class="product-grid__extend-wrapper"><div class="product-grid__extend"><p class="product-grid__description">Clicca su vota per lasciarsi il tuo feedback</p><span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i>Vota</span></div></div></div></div>');
+            for(let i = 1;  i < products.length; i+=1){
+                
+                $("#locatedDiv").append('<div class="product-grid__product-wrapper"><div class="product-grid__product"><div class="product-grid__img-wrapper"><img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" /></div><span class="product-grid__title">'+ products[i] +'</span><div class="product-grid__extend-wrapper"><div class="product-grid__extend"><p class="product-grid__description">Clicca su vota per lasciarsi il tuo feedback</p><span onclick="vota(products['+ i +'] )" class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i>Vota</span></div></div></div></div>');
             }
 
 
