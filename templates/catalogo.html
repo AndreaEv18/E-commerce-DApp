@@ -23,7 +23,7 @@
         var getText = null;
         //mi estraggo i parametri che mi porto da pagina iniziale
         var queryString = new Array();
-        window.onload = function () {
+        function onload() {
             if (queryString.length == 0) {
                 if (window.location.search.split('?').length > 1) {
                     var parametro = window.location.search.split('?')[1];
@@ -107,7 +107,7 @@
       "type": "function"
     }
   ]);
-        var contract = SmartContract.at("0x3dFeDD248517bFC0576a87d78a4802b42Fe6B634");
+        var contract = SmartContract.at("0x24a26BB3613281bf33Fa0370284d61b7a554d6d4");
 
         function getUser(){
             if(getText == "Ilaria")
@@ -146,6 +146,7 @@
             var amount = web3.toWei(cost, 'ether');
             console.log(amount)
             if (balance > amount) {
+                console.log(artId);
                 contract.purchase(artId, sender);
                 web3.eth.sendTransaction({
                     from: sender,
@@ -174,7 +175,49 @@
 
             return myBalance;
         }
+        jQuery(document).ready(function($){
+ 
+    // Define a blank array for the effect positions. This will be populated based on width of the title.
+    var bArray = [];
+    // Define a size array, this will be used to vary bubble sizes
+    var sArray = [4,6,8,10];
+ 
+    // Push the header width values to bArray
+    for (var i = 0; i < $('.bubbles').width(); i++) {
+        bArray.push(i);
+    }
+     
+    // Function to select random array element
+    // Used within the setInterval a few times
+    function randomValue(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+ 
+    // setInterval function used to create new bubble every 350 milliseconds
+    setInterval(function(){
+         
+        // Get a random size, defined as variable so it can be used for both width and height
+        var size = randomValue(sArray);
+        // New bubble appeneded to div with it's size and left position being set inline
+        // Left value is set through getting a random value from bArray
+        $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+         
+        // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
+        // Callback function used to remove finsihed animations from the page
+        $('.individual-bubble').animate({
+            'bottom': '100%',
+            'opacity' : '-=0.7'
+        }, 3000, function(){
+            $(this).remove()
+        }
+        );
+ 
+ 
+    }, 350);
+ 
+});
 
+        onload()
     </script>
 
 
@@ -206,6 +249,14 @@
             </div>
         </div>
     </nav>
+    <div class="bubbles">
+<h1 id="c" style="color: darkred;font-size: 60px;" ></h1>
+</div>
+
+</div>
+</div>
+
+<script>document.getElementById("c").innerHTML = getText;</script>
 
     <!-- Page Content -->
     <div class="container">

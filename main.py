@@ -10,7 +10,7 @@ pathImg = path + "/static/"
 contatore = 3
 
 
-vini = {"Cantina Marrocco": [10,'0'],"Cantina Alecci": [10,'1'],"Cantina Introini": [10,'2'],"Cantina RomaTre": [10,'3'] }
+vini = {"Cantina Marrocco": [1,'0'],"Cantina Alecci": [1,'1'],"Cantina Introini": [1,'2'],"Cantina RomaTre": [10,'3'] }
 
 @app.route('/', methods = ['GET'])
 def init():
