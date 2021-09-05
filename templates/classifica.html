@@ -171,7 +171,7 @@
               "type": "function"
             }
           ])
-          var contract1 = SmartContract1.at("0x2A3a51DC70379C15Ad6318b723Ad601A9252DB65")
+          var contract1 = SmartContract1.at("0x6001a2297Ea76F45A20B9e29F1bf79Ec06BA27F5")
 
           function getUser(){
             if(getText == "Ilaria")
@@ -209,13 +209,11 @@
             risultati.push(numero)
         }
         console.log(cand)
- 
-        $(document).ready(function(){
-          $("#prova0").text(risultati[0]);
-          $("#prova1").text(risultati[1]);
-          $("#prova2").text(risultati[2]);
-          $("#prova3").text(risultati[3]);
-        });
+        for(let i = 0;  i < risultati.length; i+=1){
+          $(document).ready(function(){
+            $("#prova"+i).text(risultati[i]);
+          });
+        }
         jQuery(document).ready(function($){
  
     

@@ -16,7 +16,9 @@ contract Voting {
 
   // Initialize all the contestants, posso passarglielo prima delle altre operazioni
   function voting(bytes32[] memory candidateNames) public {
-    candidateList = candidateNames;
+    if(validCandidate(candidateNames[0]) != true){
+    	candidateList.push(candidateNames[0]);
+    }
   }
 	//ok mi ritorna l'ammontare dei voti del candidato
   function totalVotesFor(bytes32 candidate) view public returns (uint256) {

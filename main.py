@@ -33,7 +33,9 @@ def classifica():
 @app.route('/acquisti/', methods = ['POST', 'GET'])
 def acquisti():
     if request.method == 'GET':
-        return render_template('acquisti.html')
+        return render_template('acquisti.html', vino = vini)
+    if request.method == 'POST':
+        return render_template('acquisti.html', vino = vini)
 
 @app.route('/catal/')
 def users():
