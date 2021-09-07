@@ -77,12 +77,38 @@
           "internalType": "address",
           "name": "user",
           "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "imgn",
+          "type": "bytes32"
         }
       ],
       "name": "purchase",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getImageNames",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -107,7 +133,7 @@
       "type": "function"
     }
   ]);
-        var contract = SmartContract.at("0x8738bAA871fb1437F323C82617FA67dDb4b3cAC6");
+        var contract = SmartContract.at("0x822d5099B41dc1c3596dD1f6fcACE366C322A5dc");
 
         function getUser(){
             if(getText == "Ilaria")
@@ -133,12 +159,18 @@
             
         }
 
-        function purchase(artId, cost) {
+        function purchase(artId, cost, imgId) {
 
             var sender = getUser();
             var receiver = web3.eth.accounts[9];
+            var img = imgId.toString();
+            var img1 = web3.fromAscii(img);
+            console.log(typeof img)
+            
+            
 
             var balance = web3.eth.getBalance(sender).toNumber();
+
             console.log(balance);
             console.log(artId);
             console.log(cost);
@@ -146,8 +178,9 @@
             var amount = web3.toWei(cost, 'ether');
             console.log(amount)
             if (balance > amount) {
+                console.log(sender)
                 console.log(artId);
-                contract.purchase(artId, sender);
+                contract.purchase(artId, sender, img1);
                 web3.eth.sendTransaction({
                     from: sender,
                     to: receiver,
@@ -285,7 +318,7 @@
                                     <p class="card-text">Vino DOC</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="#" onclick="purchase('{{key}}',{{vino[key][0]}} )">
+                                    <a href="#" onclick="purchase('{{key}}',{{vino[key][0]}}, {{vino[key][1]}})">
                                         <h6 align="center" , class="card-link">Compra</h6>
                                     </a>
                                 </div>

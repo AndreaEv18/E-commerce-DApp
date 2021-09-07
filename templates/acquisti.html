@@ -56,48 +56,74 @@
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
         var SmartContract = web3.eth.contract([
-            {
-              "constant": false,
-              "inputs": [
-                {
-                  "internalType": "string",
-                  "name": "artId",
-                  "type": "string"
-                },
-                {
-                  "internalType": "address",
-                  "name": "user",
-                  "type": "address"
-                }
-              ],
-              "name": "purchase",
-              "outputs": [],
-              "payable": false,
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "constant": true,
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "user",
-                  "type": "address"
-                }
-              ],
-              "name": "getproducts",
-              "outputs": [
-                {
-                  "internalType": "string[]",
-                  "name": "",
-                  "type": "string[]"
-                }
-              ],
-              "payable": false,
-              "stateMutability": "view",
-              "type": "function"
-            }
-          ]);
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "artId",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "imgn",
+          "type": "bytes32"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getImageNames",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getproducts",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]);
         var SmartContract1 = web3.eth.contract([
             {
               "constant": true,
@@ -228,9 +254,9 @@
               "stateMutability": "view",
               "type": "function"
             }
-          ])
-        var contract = SmartContract.at("0x8738bAA871fb1437F323C82617FA67dDb4b3cAC6");
-        var contract1 = SmartContract1.at("0x6001a2297Ea76F45A20B9e29F1bf79Ec06BA27F5")
+          ]);
+        var contract = SmartContract.at("0x822d5099B41dc1c3596dD1f6fcACE366C322A5dc");
+        var contract1 = SmartContract1.at("  0x13d06824d519FA7Ec2FF07619b293882f0e6fEbc")
 
         function getUser(){
             if(getText == "Ilaria")
@@ -258,6 +284,7 @@
 
         //var prodotti = []
         var products = [];
+        var imgg ='3.jpg';
 
         //{% for key in vino %}
         //   prodotti.push("{{key}}");
@@ -283,15 +310,35 @@
 
         function getBuyer() {
             var user = getUser();
-            //console.log(user)
+            
             //console.log(getText)
 
             products = contract.getproducts(user);
-
             console.log(products);
+           //lista dei nomi delle immagini dei prodotti che ha acquistato l'utente
+            
+            var imgNames = contract.getImageNames(user);
+            console.log(imgNames.length)
+            console.log(products.length)
+            console.log( web3.toAscii(imgNames[0]))
+            
+           
+            
+            
+        
+            
+            
+            
             for(let i = 1;  i < products.length; i+=2){
                 
-                $("#locatedDiv").append('<div class="product-grid__product-wrapper"><div class="product-grid__product"><div class="product-grid__img-wrapper"><img src="https://www.grandibottiglie.com/18943-home_default/bottiglia-vino-personalizzata-barbera-d-alba-doc-2019-lanzarotti.jpg" alt="Img" class="product-grid__img" /></div><span class="product-grid__title">'+ products[i] +'</span><div class="product-grid__extend-wrapper"><div class="product-grid__extend"><p class="product-grid__description">Clicca su vota per lasciarsi il tuo feedback</p><span onclick="vota(products['+ i +'])" class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i>Vota</span></div></div></div></div>');
+                var u = i-1
+                console.log( web3.toAscii(imgNames[u]))
+                
+                imgg = parseInt(web3.toAscii(imgNames[u]));
+                imgString = imgg.toString() + ".jpg"
+            
+
+                $("#locatedDiv").append('<div class="product-grid__product-wrapper"><div class="product-grid__product"><div class="product-grid__img-wrapper"><img src=/static/'+imgString+' alt="Img" class="product-grid__img" /></div><span class="product-grid__title">'+ products[i] +'</span><div class="product-grid__extend-wrapper"><div class="product-grid__extend"><p class="product-grid__description">Clicca su vota per lasciarsi il tuo feedback</p><span onclick="vota(products['+ i +'])" class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i>Vota</span></div></div></div></div>');
             }
 
 
