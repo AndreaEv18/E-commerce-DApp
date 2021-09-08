@@ -171,7 +171,7 @@
               "type": "function"
             }
           ])
-          var contract1 = SmartContract1.at("0xe325d9e5533165D364Fb8a0E6BC719D91f3c5896")
+          var contract1 = SmartContract1.at("0x1761d253CeaC4A2f1710CFb01A42D040F57A1fd2")
 
           function getUser(){
             if(getText == "Ilaria")
@@ -196,24 +196,38 @@
                 return web3.eth.accounts[9];
             
         }
+
+        function getID(nome){
+          {% for key in vino %}
+            if(nome == "{{key}}"){
+              return {{vino[key][1]}}
+            }
+          {% endfor %}
+        }
+
         function getCandidate(){
           var candidati = contract1.getCandidateList();
           return candidati;
         }
         var cand = getCandidate();
         
-        var risultati = []
+        var test = []
         for(let i = 0; i< cand.length; i++){
             var e = contract1.totalVotesFor(cand[i])
             var numero = e.toNumber();
-            risultati.push(numero)
+            var decodename = String(web3.toAscii(cand[i]))
+            test.push({nome: decodename.replace(/[^\x20-\x7E]/g, ''), voti: numero, id: getID(decodename.replace(/[^\x20-\x7E]/g, ''))})
         }
-        console.log(cand)
-        for(let i = 0;  i < risultati.length; i+=1){
+        console.log(test)
+        
+        
+        for(let i = 0; i < test.length; i+=1){
           $(document).ready(function(){
-            $("#prova"+i).text(risultati[i]);
+            $("#prova"+test[i].id).text(test[i].voti);
           });
         }
+
+        
         jQuery(document).ready(function($){
  
     
