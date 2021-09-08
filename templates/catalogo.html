@@ -133,7 +133,7 @@
       "type": "function"
     }
   ]);
-        var contract = SmartContract.at("0x822d5099B41dc1c3596dD1f6fcACE366C322A5dc");
+        var contract = SmartContract.at("0x688c0927759C84950687b714fB52d4a2fE4E6389");
 
         function getUser(){
             if(getText == "Ilaria")
@@ -159,10 +159,34 @@
             
         }
 
+        function getUser2(string){
+            if(string == "Ilaria")
+                return web3.eth.accounts[0];
+            if(string == "Andrea")
+                return web3.eth.accounts[1];
+            if(string == "Gabriele")
+                return web3.eth.accounts[2];
+            if(string == "User4")
+                return web3.eth.accounts[3];
+            if(string == "User5")
+                return web3.eth.accounts[4];
+            if(string == "User6")
+                return web3.eth.accounts[5];
+            if(string == "User7")
+                return web3.eth.accounts[6];
+            if(string == "User8")
+                return web3.eth.accounts[7];
+            if(string == "User9")
+                return web3.eth.accounts[8];
+            if(string == "User10")
+                return web3.eth.accounts[9];
+            
+        }
+
         function purchase(artId, cost, imgId) {
 
             var sender = getUser();
-            var receiver = web3.eth.accounts[9];
+            var receiver = contractSeller.getSeller(artId)
             var img = imgId.toString();
             var img1 = web3.fromAscii(img);
             console.log(typeof img)
@@ -263,6 +287,74 @@
             getText='{{utente}}'
         }
     </script>
+        <script>
+
+        
+        var SmartContract2 = web3.eth.contract([
+            {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "us",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "artId",
+          "type": "string"
+        }
+      ],
+      "name": "sale",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "artId",
+          "type": "string"
+        }
+      ],
+      "name": "getSeller",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+        ]);
+
+
+    var contractSeller = SmartContract2.at("0xd0F60E18f06039DE27d6960f0cBe090576dceb1f")
+    </script>
+
+    {% for key in vino %}
+     <script>
+
+        function addMap() {
+            //console.log('{{vino[key][2]}}')
+            if('{{vino[key][2]}}' != "") {
+                //user = getUser2('{{vino[key][2]}}')
+                contractSeller.sale(getUser2('{{vino[key][2]}}'),'{{key}}')
+                
+            }
+        }
+        addMap()
+    </script>
+    {% endfor %}
+
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
