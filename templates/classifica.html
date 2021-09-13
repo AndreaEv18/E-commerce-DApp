@@ -9,7 +9,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <script src="{{url_for('static', filename='vendor/js/web3.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
-  <script type="text/javascript">
+  <script>
     var getText = null;
         //mi estraggo i parametri che mi porto da pagina iniziale
         var queryString = new Array();
@@ -231,20 +231,20 @@
         jQuery(document).ready(function($){
  
     
-      var bArray = [];
+          var bArray = [];
       
-      var sArray = [4,6,8,10];
+          var sArray = [4,6,8,10];
    
-      for (var i = 0; i < $('.bubbles').width(); i++) {
-          bArray.push(i);
-      }
+          for (var i = 0; i < $('.bubbles').width(); i++) {
+              bArray.push(i);
+          }
       
-      function randomValue(arr) {
-          return arr[Math.floor(Math.random() * arr.length)];
-      }
+          function randomValue(arr) {
+              return arr[Math.floor(Math.random() * arr.length)];
+          } 
    
       // setInterval function used to create new bubble every 350 milliseconds
-      setInterval(function(){
+          setInterval(function(){
            
           // Get a random size, defined as variable so it can be used for both width and height
           var size = randomValue(sArray);
@@ -266,7 +266,7 @@
       }, 350);
  
     });
-        onload();
+    onload();
 
   </script>
 

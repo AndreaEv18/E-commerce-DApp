@@ -15,7 +15,7 @@ body {
 body {
   font: 16px/1.2 "Roboto", sans-serif;
   color: #333;
-  background-image: url("https://img5.goodfon.com/wallpaper/nbig/5/36/vino-probki-bokaly-butylki.jpg");
+  background-image: url("https://wallpaperaccess.com/full/468119.jpg");
   background-size: 100%;
 }
 a {
@@ -51,19 +51,21 @@ a {
 
 /* leaderboard */
 .leaderboard {
-  background: linear-gradient(to bottom, #3a404d, #181c26);
+  background: linear-gradient(to bottom, #b11226, #b11226);
 }
 
 /* head */
 .leaderboard .head {
   padding: 20px 16px;
   color: snow;
-  font-size: 20px;
+  font-size: 50px;
+  font-family: Apple Chancery, cursive;
   text-align: center;
 }
 .leaderboard .head h1 {
   display: inline-block;
   margin-left: 4px;
+  font-size: 50px;
 }
 
 /* body */
@@ -86,12 +88,14 @@ a {
   flex-grow: 1;
   color: black;
   background-color: transparent;
+  font-family: Apple Chancery, cursive;
   font-size: 40px;
   margin-top: 20px;
 }
 .leaderboard li small {
   font-size: 40px;
   color: black;
+  font-family: Apple Chancery, cursive;
 }
 
 .leaderboard ol li img {
@@ -106,6 +110,7 @@ a {
   margin-right: 100px;
   margin-top: 20px;
   font-size: 40px;
+  font-family: Apple Chancery, cursive;
   color: black;
 }
 span{
@@ -115,8 +120,8 @@ span{
   height: 55px;
   margin: 0 15px;
   perspective: 1000px;
-  margin-top: 40%;
-  margin-left: 45%;
+  margin-top: 33%;
+  margin-left: 59%;
 }
 span a{
   font-size: 19px;
@@ -124,7 +129,10 @@ span a{
   transform-style: preserve-3d;
   transform: translateZ(-25px);
   transition: transform .25s;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Apple Chancery, cursive;
+  margin-left: -240%;
+  text-decoration: none;
+  cursor: pointer;
   
 }
 span a:before,
@@ -132,22 +140,24 @@ span a:after{
   position: absolute;
   content: "Torna al catalogo";
   height: 55px;
-  width: 180px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 5px solid black;
   box-sizing: border-box;
   border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
 span a:before{
   color: #fff;
-  background: #000;
+  background: #b11226;
   transform: rotateY(0deg) translateZ(25px);
 }
 span a:after{
   color: #fff;
-  background: #000;
+  background: #b11226;
   transform: rotateX(90deg) translateZ(25px);
 }
 span a:hover{
@@ -174,7 +184,7 @@ text-align: center;
 display: inline-block;
 font-family: arial;
 position: relative;
-margin-left: 47%;
+margin-left: 47.3%;
 margin-top: 3%;
 }
 
