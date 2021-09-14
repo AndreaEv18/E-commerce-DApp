@@ -24,7 +24,7 @@ Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, c
 
 - Spostarsi tramite la shell nella cartella del progetto e quindi nella cartella Back-End. Eseguire il comando Truffle compile e successivamente Truffle migrate.
 
-- Da qui copiare e incollare gli indirizzi dei contratti in tutte le pagine html.\
+- Da qui copiare e incollare gli indirizzi dei contratti in tutte le pagine html.
 
 ```
  var contract = SmartContract.at("Contract Address di Purchasing");
