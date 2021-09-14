@@ -3,7 +3,7 @@
 Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza.
 :bulb: È stata realizzata una *Dapp*, nome abbreviato di *Decentralized application*, che a differenza delle normali applicazioni, ha il proprio codice back-end in esecuzione su una rete peer-to-peer decentralizzata: la blockchain.
 
-<img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/schema.jpg"/>
+<img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/schema.jpg" width="300" height="300"/>
 
 Tra le tante scelte presenti nel panorama di questa nuova tecnologia, il focus principale è stato su quella che rappresenta la scelta per eccellenza, per la creazione e il deploy di codice su blockchain: *Ethereum*.
 La piattaforma Ethereum è stata la capostipite per le applicazioni decentralizzate, la quale fornisce una macchina virtuale Turing completa, l’Ethereum Virtual Machine (EVM), che permette di eseguire scripts (smart-contracts) utilizzando una rete p2p di nodi pubblici.
