@@ -30,4 +30,4 @@ Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, c
 
 - Infine collegarsi a [http://127.0.0.1:8115](http://127.0.0.1:8115) e utilizzare l'applicazione
 
-Cin Cin :clinking_glasses:
+# Cin Cin :clinking_glasses:
