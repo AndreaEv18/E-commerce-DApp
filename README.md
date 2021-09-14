@@ -1,6 +1,6 @@
 # Wine Paradise
 
-Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza.
+Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza.\
 :bulb: È stata realizzata una *Dapp*, nome abbreviato di *Decentralized application*, che a differenza delle normali applicazioni, ha il proprio codice back-end in esecuzione su una rete peer-to-peer decentralizzata: la blockchain.
 
 <img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/schema.jpg" width="300" height="300"/>
