@@ -8,7 +8,7 @@ La piattaforma Ethereum è stata la capostipite per le applicazioni decentralizz
 
 Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, che offre diverse funzionalità che vanno dall’acquisto di un prodotto dal relativo catalogo, alla vendita di un nuovo vino, fino alla consultazione di una classifica generale, per visionare quali sono stati i prodotti più votati e quindi più apprezzati: un buon aiuto nei casi di indecisione durante un acquisto. \
 
-<img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/anteprima"/>
+<img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/anteprima.png"/>
 
 ## Come avviare ed interagire con l'E-commerce. 
 
