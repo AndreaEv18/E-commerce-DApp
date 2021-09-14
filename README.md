@@ -1,12 +1,14 @@
 # Wine Paradise
 
-Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza. \
-:bulb: È stata realizzata una *Dapp*, nome abbreviato di *Decentralized application*, che a differenza delle normali applicazioni, ha il proprio codice back-end in esecuzione su una rete peer-to-peer decentralizzata: la blockchain. \
+Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza.
+:bulb: È stata realizzata una *Dapp*, nome abbreviato di *Decentralized application*, che a differenza delle normali applicazioni, ha il proprio codice back-end in esecuzione su una rete peer-to-peer decentralizzata: la blockchain.
 
-Tra le tante scelte presenti nel panorama di questa nuova tecnologia, il focus principale è stato su quella che rappresenta la scelta per eccellenza, per la creazione e il deploy di codice su blockchain: *Ethereum*. \
-La piattaforma Ethereum è stata la capostipite per le applicazioni decentralizzate, la quale fornisce una macchina virtuale Turing completa, l’Ethereum Virtual Machine (EVM), che permette di eseguire scripts (smart-contracts) utilizzando una rete p2p di nodi pubblici. \
+<img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/schema.jpg"/>
 
-Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, che offre diverse funzionalità che vanno dall’acquisto di un prodotto dal relativo catalogo, alla vendita di un nuovo vino, fino alla consultazione di una classifica generale, per visionare quali sono stati i prodotti più votati e quindi più apprezzati: un buon aiuto nei casi di indecisione durante un acquisto. \
+Tra le tante scelte presenti nel panorama di questa nuova tecnologia, il focus principale è stato su quella che rappresenta la scelta per eccellenza, per la creazione e il deploy di codice su blockchain: *Ethereum*.
+La piattaforma Ethereum è stata la capostipite per le applicazioni decentralizzate, la quale fornisce una macchina virtuale Turing completa, l’Ethereum Virtual Machine (EVM), che permette di eseguire scripts (smart-contracts) utilizzando una rete p2p di nodi pubblici.
+
+Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, che offre diverse funzionalità che vanno dall’acquisto di un prodotto dal relativo catalogo, alla vendita di un nuovo vino, fino alla consultazione di una classifica generale, per visionare quali sono stati i prodotti più votati e quindi più apprezzati: un buon aiuto nei casi di indecisione durante un acquisto.
 
 <img src="https://github.com/AndreaEv18/E-commerce-DApp/blob/main/static/anteprima.png"/>
 
