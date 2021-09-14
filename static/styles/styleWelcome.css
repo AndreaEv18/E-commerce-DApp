@@ -9,6 +9,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
+    zoom: 50%;
     transition: background-color 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -58,8 +59,8 @@ h1 {
     font-size: 170px;
     line-height: .75;
     margin: 10px 0;
-    margin-left: -280%;
-    margin-top: -150%;
+    margin-left: -200%;
+    margin-top: -91%;
 }
 /* styling my button */
 
@@ -97,7 +98,7 @@ nav.primary-navigation {
   padding: 120px 0 0 0;
   text-align: center;
   font-size: 50px;
-  margin-top: -50%;
+  margin-top: -30%;
   margin-left: -30%;
 }
 
@@ -181,7 +182,7 @@ ul li ul li a {
 
 p{
     position: static;
-    margin-left: -20%;
+    margin-left: -10%;
     background-color: transparent;
 }
 /*# sourceMappingURL=styleWelcome1.css.map */

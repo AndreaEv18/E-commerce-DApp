@@ -2,6 +2,7 @@ body {
   padding-top: 50px;
   background: url("https://images5.alphacoders.com/889/889806.jpg") no-repeat;
   background-size: cover;
+  zoom: 50%;
 }
 
 table, td, th {  
