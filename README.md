@@ -1,4 +1,4 @@
-# Wine Paradise
+# Wine Paradise :wine_glass: 
 
 Efficienza, resilienza e cybersecurity. Sono questi i cardini principali sui quali gli sviluppatori delle nuove applicazioni stanno volgendo lo sguardo, ed è qui, che l’utilizzo della blockchain può fare la differenza.\
 :bulb: È stata realizzata una *Dapp*, nome abbreviato di *Decentralized application*, che a differenza delle normali applicazioni, ha il proprio codice back-end in esecuzione su una rete peer-to-peer decentralizzata: la blockchain.
@@ -30,3 +30,4 @@ Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, c
 
 - Infine collegarsi a [http://127.0.0.1:8115](http://127.0.0.1:8115) e utilizzare l'applicazione
 
+Cin Cin :clinking_glasses:
