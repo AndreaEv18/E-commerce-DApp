@@ -32,7 +32,7 @@ Il progetto si è basato sulla realizzazione di un E-commerce di vendita vini, c
  var contractSeller = SmartContract2.at("Contract Address di Seller")
 ```
 
-- Spostarsi nella cartella iniziale e avviare il file main.py attraverso il comando python main.py.
+- Spostarsi nella cartella iniziale e avviare il file main.py attraverso il comando python main.py
 
 - Infine collegarsi a [http://127.0.0.1:8115](http://127.0.0.1:8115) e utilizzare l'applicazione
 
